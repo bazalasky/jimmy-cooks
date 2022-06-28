@@ -8,6 +8,12 @@ body {
     margin-right: auto;
 }
 
+#moviesList {
+    color: #000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 #searchContainer {
     background-color: #424543;
     padding: 50px;

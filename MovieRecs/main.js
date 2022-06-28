@@ -1,7 +1,7 @@
 let APIKEY = '75cd58ba7fdf29b8b74300d1e35505e3';
 let baseURL = 'https://api.themoviedb.org/3/';
 let configData = null;
-let baseImageURL = null;
+let baseImageURL = 'https://image.tmdb.org/t/p/original/';
 
 $(document).ready(() => {
     $('#searchForm').on('submit', (e) => {
@@ -12,10 +12,19 @@ $(document).ready(() => {
 });
 
 function getMovies(searchText) {
-    let url = ''.concat(baseURL, 'search/keyword?api_key=', APIKEY, '&query=', searchText);
+    let url = ''.concat(baseURL, 'search/movie?api_key=', APIKEY, '&query=', searchText);
     fetch(url)
     .then(result => result.json())
     .then((data) => {
-        document.getElementById('movies').innerHTML = JSON.stringify(data, null, 4);
+        let movies = data.results;
+        let output = '';
+        console.log(data);
+        console.log(movies);
+        $.each (movies, (index, movie) => {
+            output +=
+            '<div class="col-md-3" style="margin-top: 20px; margin-bottom: 20px;"><div class="card text-center"><img src="' + baseImageURL + movie.poster_path + '"><h5>' + movie.title +'</h5><p>' + movie.release_date + '</p></div></div>';
+            
+            $('#moviesList').html(output);
+        })
     })
 }
