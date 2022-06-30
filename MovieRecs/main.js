@@ -11,6 +11,15 @@ $(document).ready(() => {
     })
 });
 
+function showMovieDetails(id) {
+    let url = ''.concat(baseURL, 'movie/' , id, '?api_key=', APIKEY, '&language=en-US');
+    fetch (url)
+    .then(result => result.json())
+    .then((data) => {
+        console.log(data);
+    })
+}
+
 function getMovies(searchText) {
     let url = ''.concat(baseURL, 'search/movie?api_key=', APIKEY, '&query=', searchText);
     fetch(url)
@@ -18,13 +27,12 @@ function getMovies(searchText) {
     .then((data) => {
         let movies = data.results;
         let output = '';
-        console.log(data);
-        console.log(movies);
         $.each (movies, (index, movie) => {
             output +=
-            '<div class="col-md-3" style="margin-top: 20px; margin-bottom: 20px;"><div class="card text-center"><img src="' + baseImageURL + movie.poster_path + '"><h5>' + movie.title +'</h5><p>' + movie.release_date + '</p></div></div>';
+            '<div class="col-md-3" style="margin-top: 20px; margin-bottom: 20px; cursor: pointer;" onclick="showMovieDetails(' + movie.id + ')"><div class="card text-center"><img src="' + baseImageURL + movie.poster_path + '"><h5>' + movie.title +'</h5><p>' + movie.release_date + '</p></div></div>';
             
             $('#moviesList').html(output);
         })
     })
 }
+
