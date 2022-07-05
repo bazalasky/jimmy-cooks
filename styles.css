@@ -4,7 +4,7 @@ body {
     padding-top: 100px;
 }
 
-ul {
+.navigation {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -15,11 +15,11 @@ ul {
   width: 100%;
 }
 
-li {
+.navLink {
     float: left;
   }
   
-  li a {
+  .navLink a {
     display: block;
     color: white;
     text-align: center;
@@ -27,7 +27,7 @@ li {
     text-decoration: none;
   }
   
-  li a:hover:not(.active) {
+  .navLink a:hover:not(.active) {
   background-color: #363534;
   }
   

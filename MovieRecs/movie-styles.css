@@ -8,6 +8,13 @@ body {
     margin-right: auto;
 }
 
+#movieInfo {
+    background-color: #424543;
+    color: #fff;
+    border-radius: 10px;
+
+}
+
 #moviesList {
     color: #000;
     margin-top: 20px;
