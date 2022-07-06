@@ -9,7 +9,6 @@ $(document).ready(() => {
         getSearch(searchText);
         e.preventDefault();
     })
-    getNowPlaying();
 });
 
 function showMovieDetails() {
