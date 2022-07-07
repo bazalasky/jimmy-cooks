@@ -3,6 +3,7 @@
         <meta charset="utf-8">
         <title>MovieRecs</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link rel="stylesheet" href="movie-styles.css">
         <link rel="stylesheet" href="/styles.css">
     </head>
@@ -21,18 +22,67 @@
         </div>
 
         <div class="container">
-            <div class="row" id="moviesList"></div>
+            <ul class="row" id="moviesList"></ul>
         </div>
 
-        <div class="container">
+        <div class="offset-sm-1 col-sm-10">
             <h2 class="text-center" style="color: #fff;">Now Playing</h2>
             <div class="row" id="nowPlaying"></div>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <script src="main.js"></script>
         <script>
-            getNowPlaying();
+            $(document).ready(() => {
+                
+                $('#searchForm').on('submit', (e) => {
+                    let searchText = $('#searchField').val();
+                    getSearch(searchText);
+                    e.preventDefault();
+                });
+
+                getNowPlaying();
+
+                $('#nowPlaying').slick({
+                    dots: true,
+                    arrows: true,
+                    infinite: false,
+                    speed: 300,
+                    slidesToShow: 6,
+                    slidesToScroll: 4,
+                    responsive: [
+                        {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                        },
+                        {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                        },
+                        {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                        }
+                        // You can unslick at a given breakpoint now by adding:
+                        // settings: "unslick"
+                        // instead of a settings object
+                    ]
+                });   
+                          
+            });
+               
         </script>
     </body>
 </html>
