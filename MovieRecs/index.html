@@ -26,14 +26,19 @@
             <div class="row" id="moviesList"></div>
         </div>
 
-        <div class="offset-sm-1 col-sm-10">
+        <div class="col-sm-12">
             <h2 class="text-center" style="color: #fff;">Now Playing</h2>
-            <div class="row slickSlider" id="nowPlaying"></div>
+            <div class="row">
+                <div class="prev col-sm-1 text-center align-self-center"><span class="fa fa-angle-left"></span></div>
+                <div class="row col-sm-10 slickSlider" id="nowPlaying"></div>
+                <div class="next col-sm-1 text-center align-self-center"><span class="fa fa-angle-right"></span></div>
+            </div>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <script src="main.js"></script>
+        <script src="https://use.fontawesome.com/90d31b0eb7.js"></script>
         <script>
 
             $(document).ready(() => {
@@ -57,27 +62,28 @@
                 
 
                 $('.slickSlider').slick({
-                    dots: true,
+                    dots: false,
                     arrows: true,
-                    infinite: false,
+                    infinite: true,
                     speed: 300,
                     slidesToShow: 6,
-                    slidesToScroll: 4,
+                    slidesToScroll: 1,
+                    prevArrow: $('.prev'),
+                    nextArrow: $('.next'),
                     responsive: [
                         {
                         breakpoint: 1024,
                         settings: {
                             slidesToShow: 3,
-                            slidesToScroll: 3,
+                            slidesToScroll: 1,
                             infinite: true,
-                            dots: true
                         }
                         },
                         {
                         breakpoint: 600,
                         settings: {
                             slidesToShow: 2,
-                            slidesToScroll: 2
+                            slidesToScroll: 1
                         }
                         },
                         {

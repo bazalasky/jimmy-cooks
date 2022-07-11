@@ -50,7 +50,6 @@ function getNowPlaying() {
         $.each(movies, (index, movie) => {
             let output = '';
             output += '<div class="col" style="margin-top: 20px; margin-bottom: 20px; cursor: pointer;" onclick="movieSelected(' + movie.id + ')"><div class="card text-center"><img src="' + baseImageURL + movie.poster_path + '"></div></div>';
-            console.log(output);
             $('.slickSlider').slick('slickAdd', output);
         })        
     })
