@@ -1,6 +1,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>MovieRecs</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
@@ -21,20 +22,26 @@
             </form>
         </div>
 
-        <div class="container">
-            <ul class="row" id="moviesList"></ul>
+        <div class="container offset-sm-1 col-sm-10">
+            <div class="row" id="moviesList"></div>
         </div>
 
         <div class="offset-sm-1 col-sm-10">
             <h2 class="text-center" style="color: #fff;">Now Playing</h2>
-            <div class="row" id="nowPlaying"></div>
+            <div class="row slickSlider" id="nowPlaying"></div>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <script src="main.js"></script>
         <script>
+
             $(document).ready(() => {
+
+                let el = document.getElementById("nowPlaying")
+                document.addEventListener("touchstart", event => {
+                    console.log("here");
+                }, {passive: true});
                 
                 $('#searchForm').on('submit', (e) => {
                     let searchText = $('#searchField').val();
@@ -44,7 +51,12 @@
 
                 getNowPlaying();
 
-                $('#nowPlaying').slick({
+                jQuery.event.special.touchmove = { setup: function( _, ns, handle ){ if ( ns.includes("noPreventDefault") ) { this.addEventListener("touchmove", handle, { passive: false }); } else { this.addEventListener("touchmove", handle, { passive: true }); } } };
+                jQuery.event.special.touchstart = { setup: function( _, ns, handle ){ if ( ns.includes("noPreventDefault") ) { this.addEventListener("touchstart", handle, { passive: false }); } else { this.addEventListener("touchstart", handle, { passive: true }); } } };
+
+                
+
+                $('.slickSlider').slick({
                     dots: true,
                     arrows: true,
                     infinite: false,
@@ -79,7 +91,10 @@
                         // settings: "unslick"
                         // instead of a settings object
                     ]
-                });   
+                }); 
+
+                
+                
                           
             });
                
