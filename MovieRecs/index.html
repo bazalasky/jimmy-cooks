@@ -9,11 +9,7 @@
         <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
-        <ul class="navbar-brand navigation">
-            <li class="navLink"><a class="active" href="/home.html">Home</a></li>
-            <li class="navLink"><a class="active" href="/BeatMachine/index.html">Beat Machine</a></li>
-            <li class="navLink"><a class="active" href="/MovieRecs/index.html">Movie Recs</a></li>
-        </ul>
+        <div id="nav-bar"></div>
 
         <div class="row container offset-sm-2 col-sm-8" id="searchContainer">
             <h2 class="searchTitle">Search Movies</h2>
@@ -42,6 +38,8 @@
         <script>
 
             $(document).ready(() => {
+
+                $('#nav-bar').load("/nav.html");
 
                 let el = document.getElementById("nowPlaying")
                 document.addEventListener("touchstart", event => {
