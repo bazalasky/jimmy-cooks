@@ -22,6 +22,10 @@ h1 {
     margin: 10px;
 }
 
+.drum-button-row {
+  justify-content: center;
+}
+
 .pianoKeys {
     height:18.875em;
   width:34em;
