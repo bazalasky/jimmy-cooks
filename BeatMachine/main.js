@@ -41,17 +41,17 @@ primaryGainControl.gain.setValueAtTime(0.05, 0);
 primaryGainControl.connect(audioContext.destination);
 
 /* WHITE NOISE BUTTON */
-whiteNoiseButton.addEventListener("click", () => {
-    whiteNoiseButton.style.boxShadow = 'none'
-    const whiteNoiseSource = audioContext.createBufferSource();
-    whiteNoiseSource.buffer = buffer;
-    whiteNoiseSource.connect(primaryGainControl);
-    whiteNoiseSource.start()
-    var shadow = '0 8px 16px 0 rgba(218, 16, 16, 0.568), 0 6px 20px 0 rgba(0,0,0,0.19)';
-    setTimeout(function() {
-        whiteNoiseButton.style.boxShadow = shadow;
-    }, 1000);
-})
+// whiteNoiseButton.addEventListener("click", () => {
+//     whiteNoiseButton.style.boxShadow = 'none'
+//     const whiteNoiseSource = audioContext.createBufferSource();
+//     whiteNoiseSource.buffer = buffer;
+//     whiteNoiseSource.connect(primaryGainControl);
+//     whiteNoiseSource.start()
+//     var shadow = '0 8px 16px 0 rgba(218, 16, 16, 0.568), 0 6px 20px 0 rgba(0,0,0,0.19)';
+//     setTimeout(function() {
+//         whiteNoiseButton.style.boxShadow = shadow;
+//     }, 1000);
+// })
 
 document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowUp') {
